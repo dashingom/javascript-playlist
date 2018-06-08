@@ -13,10 +13,20 @@ class User {
   }
 }
 
+class Admin extends User {
+  deleteUser(user){
+    users = users.filter(u => {
+      return u.email != user.email;
+    })
+  }
+}
+
 userOne = new User('onkar.nawghare@gmail.com', 'Onkar Nawghare');
 userTwo = new User('bgdhone@gmail.com', 'Bhagyashree');
+admin = new Admin('guru@gmail.com', 'Guru');
 
-console.log(userOne);
-userOne.login().logout();
-console.log(userTwo);
-userTwo.logout().login();
+users = [userOne, userTwo, admin];
+
+admin.deleteUser(userOne);
+
+console.log(users);
